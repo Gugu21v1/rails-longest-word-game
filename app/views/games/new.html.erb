@@ -1,0 +1,18 @@
+<h1>New Game</h1>
+<div class="container center">
+  <% @array.each do |number| %>
+  <div class="letras">
+    <%= number.upcase %>
+  </div>
+  <% end %>
+</div>
+
+<form action="/score" method="POST" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <label>The largest word that you can do with this letters is?</label>
+  <br>
+  <input type="text" name="word">
+  <br>
+  <input id="collected_input" name="collected_input" onchange="alert('Input collected!')" type="hidden" value="<%=@array.join(" ") %>"/>
+  <input class="button" type="submit" value="Submit">
+</form>
